@@ -44,8 +44,16 @@ def trigPattern():
     return s;
 
 def nameStr():
-    pass
-
+    name = input("Enter your name: ")
+    three_letters = list(name.casefold())[:3]
+    HEIGHT=5 #LETTER HEIGHT
+    S="\n\n"
+    for y in range(HEIGHT):
+        for letter in three_letters:
+            S+=LETTERS[letter][y]+"  "
+            #giving trailing spaces for clearance
+        S+="\n"
+    return S
 
 def main():
     funcs = [exit,specialSum,trigPattern,nameStr]
@@ -56,51 +64,54 @@ What you want to do?
     3. Name as a string
     0. Exit
 Enter your option[0-3]: """)
+    print("\n")
     try:ans = funcs[int(opt)]();
     except IndexError: print("Please enter a valid option");return;
     except UnboundLocalError: print("Please enter a valid option");return;
     except ValueError: print("Please enter a correct value");return;
     print("The answer is:"+str(ans))
+    print("______________________________________")
 
-LETTERS = {"a":"""
-   #
-  # #
- #####
-#     #
-#     #""",
+LETTERS = {" ":"\n"+" \n"*5,
+"a":"""
+  #  
+ # # 
+#####
+#   #
+#   #""",
 "b":"""
-###
+### 
 #  #
-###
+### 
 #  #
-###""",
+### """,
 "c":"""
 ####
-#
-#
-#
+#   
+#   
+#   
 ####""",
 "d":"""
-###
+### 
 #  #
 #  #
 #  #
-###""",
+### """,
 "e":"""
 ####
-#
-####
-#
+#   
+### 
+#   
 ####""",
 "f":"""
 ####
-#
-###
-#
-#""",
+#   
+### 
+#   
+#   """,
 "g":"""
 ####
-#
+#   
 # ##
 #  #
 ####""",
@@ -112,27 +123,27 @@ LETTERS = {"a":"""
 #   #""",
 "i":"""
 ###
- #
- #
- #
+ # 
+ # 
+ # 
 ###""",
 "j":"""
  ###
-  #
-  #
-# #
- ##""",
+  # 
+  # 
+# # 
+ ## """,
 "k":"""
 #  #
-# #
-##
-# #
+# # 
+##  
+# # 
 #  #""",
 "l":"""
-#
-#
-#
-#
+#   
+#   
+#   
+#   
 ####""",
 "m":"""
 #   #
@@ -147,81 +158,82 @@ LETTERS = {"a":"""
 #  ##
 #   #""",
 "o":"""
- ###
+ ### 
 #   #
 #   #
 #   #
- ###""",
+ ### """,
 "p":"""
-####
+#### 
 #   #
-####
-#
-#""",
+#### 
+#    
+#    """,
 "q":"""
- ###
-#   #
-#   #
-#  ##
+ ###  
+#   # 
+#   # 
+#  ## 
  ### #""",
 "r":"""
-###
+### 
 #  #
-###
-# #
+### 
+# # 
 #  #""",
 "s":"""
 ####
-#
+#   
 ####
    #
 ####""",
 "t":"""
 #####
-  #
-  #
-  #
-  #""",
+  #  
+  #  
+  #  
+  #  """,
 "u":"""
 #   #
 #   #
 #   #
 #   #
- ###""",
+ ### """,
 "v":"""
 #   #
 #   #
 #   #
- # #
-  #""",
+ # # 
+  #  """,
 "w":"""
 #       #
 #       #
 #   #   #
- # # # #
-  #   #""",
+ # # # # 
+  #   #  """,
 "x":"""
 #   #
- # #
-  #
- # #
+ # # 
+  #  
+ # # 
 #   #""",
 "y":"""
 #   #
- # #
-  #
-  #
-  #""",
+ # # 
+  #  
+  #  
+  #  """,
 "z":"""
 #####
-   #
-  #
- #
+   # 
+  #  
+ #   
 #####"""}
 
+for letter in LETTERS:
+    LETTERS[letter]=LETTERS[letter].splitlines()[1:]
 
 if __name__=="__main__":
-    for x in LETTERS: print(LETTERS[x])
     while True:
         try:main()
         except KeyboardInterrupt: print();exit()
