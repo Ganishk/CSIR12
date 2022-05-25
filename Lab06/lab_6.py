@@ -48,11 +48,13 @@ def nameStr():
     three_letters = list(name.casefold())[:3]
     HEIGHT=5 #LETTER HEIGHT
     S="\n\n"
-    for y in range(HEIGHT):
+    try:
+     for y in range(HEIGHT):
         for letter in three_letters:
             S+=LETTERS[letter][y]+"  "
             #giving trailing spaces for clearance
         S+="\n"
+    except KeyError: print("Please enter a correct name");return nameStr()
     return S
 
 def main():
