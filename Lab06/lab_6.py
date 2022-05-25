@@ -8,7 +8,7 @@ def specialSum():
     n = [int(input(
         f"Enter the {i} number: ")) for i in ("first","second")]
     S = sum(n)
-    S = 50 if 25<=S<=50 else 60 if 50<S<=60 else S;
+    S = 50 if 25<=S<50 else 60 if 50<=S<=60 else S;
     return S
 
 
